@@ -41,7 +41,7 @@ Users can view previous conversations, append new messages, and see a typing ind
 
 ## 🚀 Getting Started
 
-1. **Clone the repository**
+### 1. Clone the repository
 
 ```bash
 git clone <repo-url>
@@ -51,11 +51,11 @@ cp .env.example .env
 
 Fill in your MongoDB URI, Redis config, JWT secret, and OpenRouter API key.
 
-2. **Run the app**
+### 2. Run the app
 
-### Option 1: Development mode (local)
+**Option 1: Development mode (local)**
 
-1. **Server**
+1. Server
 
 ```bash
 cd server
@@ -63,7 +63,7 @@ npm install
 npm run dev
 ```
 
-2. **Client**
+2. Client
 
 ```bash
 cd client
@@ -71,13 +71,15 @@ npm install
 npm run dev
 ```
 
-### Option 2: Using Docker (development or production)
+**Option 2: Using Docker (development or production)**
 
 ```bash
 docker-compose up --build
 ```
 
 Open the app in your browser at: http://localhost:3000
+
+---
 
 ## 📁 Repository Structure
 
