@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./server
+    container_name: backend
+    restart: always
+    env_file:
+      - ./server/.production.env # Backend env file
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+      - redis
+
+  frontend:
+    build: ./client
+    container_name: frontend
+    restart: always
+    ports:
+      - "3000:3000" # Node server serving frontend
+    env_file:
+      - ./client/.env
+    depends_on:
+      - backend
+
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - mongo_data:/data/db
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  mongo_data:
+  redis_data:
